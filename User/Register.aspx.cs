@@ -34,7 +34,7 @@ namespace LibraryMgmtSystem
                 SqlConnection con = new SqlConnection(connstr);
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("insert into user_details(user_fullname,user_name,user_pass,user_pass_confirm) values('" + txtname.Text + "','" + txtusername.Text + "','" + txtpass.Text + "','" + txtpassconfirm.Text + "')", con);
+                SqlCommand cmd = new SqlCommand("insert into user_details(user_name,user_pass,user_passconfirm) values('" + txtusername.Text + "','" + txtpass.Text + "','" + txtpassconfirm.Text + "')", con);
                 cmd.ExecuteNonQuery();
                 if (IsPostBack)
                 {

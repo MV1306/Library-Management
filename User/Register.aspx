@@ -27,10 +27,6 @@
                 <h2 class="auto-style1">User Registration Page</h2>
             </div>
             <div class="form-group" style="width:80%">
-                <label class="text-dark" for="userlabel">Fullname</label>
-                    <asp:TextBox ID="txtname" runat="server" CssClass="form-control"></asp:TextBox>
-                </div>
-            <div class="form-group" style="width:80%">
                 <label class="text-dark" for="userlabel">Username</label>
                     <asp:TextBox ID="txtusername" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
