@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserLogin.aspx.cs" Inherits="LibraryMgmtSystem.UserLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="UserLogin.aspx.cs" Inherits="LibraryMgmtSystem.UserLogin" %>
 
 <!DOCTYPE html>
 
@@ -28,13 +28,16 @@
             </div>
             <div class="form-group" style="width:80%">
                 <label class="text-dark" for="userlabel">Username</label>
-                    <asp:TextBox ID="txtusername" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtunamelog" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             <div class="form-group">
                 <label class="text-dark" for="passlabel">Password</label>
-                    <asp:TextBox ID="txtpass" runat="server" CssClass="form-control" TextMode="Password" Width="80%"></asp:TextBox>
+                    <asp:TextBox ID="txtpasslog" runat="server" CssClass="form-control" TextMode="Password" Width="80%"></asp:TextBox>
             </div>
-                <asp:Button ID="btnlogin" runat="server" Text="Login" CssClass="btn btn-primary" />
+                <asp:Button ID="btnlogin" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnlogin_Click" />
+            <div>
+                <asp:LinkButton ID="lbtnchangepw" runat="server" CssClass="btn btn-link" PostBackUrl="~/ForgotPassword.aspx">Forgot Password</asp:LinkButton>
+            </div>
             <div>
                 <asp:LinkButton ID="lbtnlogreg" runat="server" CssClass="btn btn-link" PostBackUrl="~/Register.aspx" >Don't Have an Account? Register</asp:LinkButton>
             </div>
