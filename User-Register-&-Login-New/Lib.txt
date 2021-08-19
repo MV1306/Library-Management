@@ -1,0 +1,145 @@
+USE [ELib]
+GO
+/****** Object:  Table [dbo].[Assign]  ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Assign](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[assignid]  AS ('AS'+right('000'+CONVERT([varchar](3),[id],(0)),(6))),
+	[userid] [nvarchar](50) NOT NULL,
+	[username] [nvarchar](50) NOT NULL,
+	[bookid] [nvarchar](50) NOT NULL,
+	[bookname] [nvarchar](50) NOT NULL,
+	[assigneddate] [nvarchar](50) NULL,
+	[returndate] [nvarchar](50) NULL,
+	[penality] [nvarchar](50) NULL,
+	[statusid] [nchar](10) NULL,
+	[updatestatusdate] [nvarchar](50) NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[BookRecord]  ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[BookRecord](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[bookid] As ('BID'+right('000'+CONVERT([varchar](3),[id],(0)),(6))) PERSISTED NOT NULL,
+	[bookname] [nvarchar](250) NULL,
+	[bookpubname] [nvarchar](50) NULL,
+	[bookpubyear] [nvarchar](50) NULL,
+	[bookprice] [nvarchar](50) NULL,
+	[bookquantity] [nvarchar](50) NULL,
+	[recorddate] [nvarchar](50) NULL,
+ CONSTRAINT [PK_BookRecord] PRIMARY KEY CLUSTERED 
+(
+	[bookid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[statusdetails]   ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[statusdetails](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[statusid] [nchar](10) NOT NULL,
+	[statusname] [nvarchar](50) NULL,
+ CONSTRAINT [PK_statusdetails] PRIMARY KEY CLUSTERED 
+(
+	[statusid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[User]  ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[User](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[userid] AS ('U'+right('000'+CONVERT([varchar](3),[id],(0)),(6))) PERSISTED NOT NULL,
+	[username] [nvarchar](50) NOT NULL,
+	[useremail] [nvarchar](50) NULL,
+	[gender] [nvarchar](50) NULL,
+	[phno] decimal(10,0) NULL,
+	[userdob] [nvarchar](50) NULL,
+	[userpass] [nvarchar](50) NULL,
+	[userconfirmpass] [nvarchar](50) NULL,
+	 CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[userid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Assign] ON 
+GO
+INSERT [dbo].[Assign] ([id],[userid],[username],[bookid],[bookname],[assigneddate], [returndate], [penality], [statusid], [updatestatusdate]) VALUES (20,N'U00020',N'Ketan Jha',N'BID0007',N'PHP 5', N'14/08/2021', N'29/08/2021', N'10', N'std3', N'14/08/2021')
+GO
+SET IDENTITY_INSERT [dbo].[Assign] OFF
+GO
+SET IDENTITY_INSERT [dbo].[BookRecord] ON 
+SET ANSI_PADDING ON
+GO
+GO
+INSERT [dbo].[BookRecord] ([id], [bookname],[bookpubname], [bookpubyear], [bookprice], [bookquantity], [recorddate]) VALUES (1, N'ASP.NET Fundamental', N'Hi-Tech Publication', N'2015', N'520', N'40', N'21/08/2015')
+GO
+INSERT [dbo].[BookRecord] ([id], [bookname],[bookpubname], [bookpubyear], [bookprice], [bookquantity], [recorddate]) VALUES (2,  N'C#.NET Unleashed', N'Apress Publication', N'2013', N'315', N'25', N'12-05-2019')
+GO
+INSERT [dbo].[BookRecord] ([id], [bookname],[bookpubname], [bookpubyear], [bookprice], [bookquantity], [recorddate]) VALUES (3, N'SQL Server 2012', N'Spectrum Publication', N'2012', N'375', N'30', N'01-01-2020')
+GO
+INSERT [dbo].[BookRecord] ([id], [bookname],[bookpubname], [bookpubyear], [bookprice], [bookquantity], [recorddate]) VALUES (4, N'HTML & CSS', N'Spectrum Publication', N'2012', N'175', N'25', N'15-10-2021')
+GO
+INSERT [dbo].[BookRecord] ([id], [bookname],[bookpubname], [bookpubyear], [bookprice], [bookquantity], [recorddate]) VALUES (5, N'JQuery Cookbook', N'Wrox', N'2014', N'250', N'35', N'08-12-2012')
+GO
+INSERT [dbo].[BookRecord] ([id], [bookname],[bookpubname], [bookpubyear], [bookprice], [bookquantity], [recorddate]) VALUES (6, N'ASP.NET MVC', N'Apress', N'2013', N'300', N'15', N'10-10-2010')
+GO
+INSERT [dbo].[BookRecord] ([id], [bookname], [bookpubname], [bookpubyear], [bookprice], [bookquantity], [recorddate]) VALUES (7, N'PHP 5', N'P6', N'2015', N'370', N'50', N'25-11-2018')
+GO
+INSERT [dbo].[BookRecord] ([id],[bookname],[bookpubname], [bookpubyear], [bookprice], [bookquantity], [recorddate]) VALUES (8, N'Ragg With C', N'Tata Mc grew Hill', N'2010', N'545', N'19', N'10/08/2016')
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[BookRecord] OFF
+GO
+SET IDENTITY_INSERT [dbo].[statusdetails] ON 
+
+GO
+INSERT [dbo].[statusdetails] ([id], [statusid], [statusname]) VALUES (1, N'std1', N'Pending')
+GO
+INSERT [dbo].[statusdetails] ([id], [statusid], [statusname]) VALUES (2, N'std2', N'Closed')
+GO
+INSERT [dbo].[statusdetails] ([id], [statusid], [statusname]) VALUES (3, N'std3', N'In Progress')
+GO
+SET IDENTITY_INSERT [dbo].[statusdetails] OFF
+GO
+SET IDENTITY_INSERT [dbo].[User] ON 
+SET ANSI_PADDING ON
+GO
+GO
+INSERT [dbo].[User] ([id],[username],[useremail], [gender],[phno],[userdob], [userpass],[userconfirmpass]) VALUES (20,N'Ketan Jha','ketanjha8701@gmail.com','Male',7200768947,N'2001-07-08', N'ketan1234',N'ketan1234')
+GO
+INSERT [dbo].[User] ([id],[username],[useremail], [gender],[phno],[userdob], [userpass],[userconfirmpass]) VALUES (21,N'Jegadeesh','jegadeeshkumar15@gmail.com','Male',9675685779,N'2000-10-21', N'jega1234',N'jega1234')
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[User] OFF
+GO
+
