@@ -42,7 +42,7 @@ namespace LibraryManagementSys
                         String ToEmailAddress = dt.Rows[0][3].ToString();
                         String Username = dt.Rows[0][2].ToString();
                         String EmailBody = "Hi " + Username + ",<br/><br/> Click the link below to reset your password <br/><br/> http://localhost:56395/ChangePassword.aspx?Uid=" + myGUID;
-                        MailMessage PassRecMail = new MailMessage("manojprabakaran2001@gmail.com", ToEmailAddress);
+                        MailMessage PassRecMail = new MailMessage("elibrarymanagement56@gmail.com", ToEmailAddress);
                         PassRecMail.Body = EmailBody;
                         PassRecMail.IsBodyHtml = true;
                         PassRecMail.Subject = "Reset Password";
@@ -52,8 +52,8 @@ namespace LibraryManagementSys
                         SMTP.UseDefaultCredentials = false;
                         SMTP.Credentials = new NetworkCredential()
                         {
-                            UserName = "manojprabakaran2001@gmail.com",
-                            Password = "Manojvarsha"
+                            UserName = "elibrarymanagement56@gmail.com",
+                            Password = "Password"
                         };
                         SMTP.EnableSsl = true;
                         SMTP.Send(PassRecMail);
